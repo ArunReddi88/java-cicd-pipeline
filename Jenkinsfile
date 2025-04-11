@@ -5,13 +5,7 @@ pipeline {
         maven 'Maven3.8.7'
         jdk 'JAVA-17'
     }
-
-    environment {
-        SONARQUBE = credentials('sonarqube-token')
-        DOCKER_REGISTRY = 'your-dockerhub-username/java-app'
-    }
-
-    stages {
+     stages {
         stage('Clone') {
             steps {
                 git 'https://github.com/your-repo/java-app.git'
