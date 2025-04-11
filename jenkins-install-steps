@@ -17,11 +17,25 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 open Jenkins in your browser: http://*.*.*.*:8080/
 yum install -y git
 git --version
+sudo yum remove -y podman-docker
 sudo yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo systemctl enable --now docker
 docker version
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
+============================
+Step 1: Pull the SonarQube Docker image
+docker pull sonarqube:9.9.3-community  -> (You can also use sonarqube:community or a specific version like 9.9.3-community.)
+Step 2: Start SonarQube container
+docker run -d --name sonarqube \   -p 9000:9000 \   -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \   sonarqube:9.9.3-community
+Explanation:
+-p 9000:9000 → Exposes SonarQube UI
+SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true → Skip memory lock checks (for Docker envs)
+Step 3: Access the UI
+http://3.83.185.237:9000
+
+
+
 
 
 
