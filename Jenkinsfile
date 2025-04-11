@@ -6,7 +6,7 @@ pipeline {
         jdk 'JAVA-17'
     }
      stages {
-        stage('Clone') {
+        stage('checkout') {
             steps {
                 git 'https://github.com/ArunReddi88/java-cicd-pipeline.git', branch: 'main'
             }
