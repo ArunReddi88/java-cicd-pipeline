@@ -8,7 +8,7 @@ pipeline {
      stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/your-repo/java-app.git'
+                git 'https://github.com/ArunReddi88/java-cicd-pipeline.git'
             }
         }
 
